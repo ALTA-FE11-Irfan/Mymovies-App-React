@@ -3,7 +3,7 @@ import React, { Component } from "react";
 export class Detail extends Component {
   render() {
     return (
-      <div id="Detail" className="bg-black py-20">
+      <div id="Detail" className="bg-black py-20 px-6">
         <h1 className="pb-16 text-5xl font-bold text-center">New Movie</h1>
         <div className="card lg:card-side bg-neutral shadow-xl">
           <figure>
