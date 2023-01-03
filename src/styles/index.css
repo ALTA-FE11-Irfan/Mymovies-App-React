@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.fl {
+  font-family: "League Spartan", sans-serif;
+}
+
+.fr {
+  font-family: "Roboto", sans-serif;
+}
