@@ -6,16 +6,11 @@ html,
 body {
   padding: 0;
   margin: 0;
+  font-family: "Manrope", sans-serif;
+  color: white;
+  letter-spacing: .05rem;
 }
 
 * {
   box-sizing: border-box;
-}
-
-.fl {
-  font-family: "League Spartan", sans-serif;
-}
-
-.fr {
-  font-family: "Roboto", sans-serif;
 }

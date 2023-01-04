@@ -1,68 +1,74 @@
 import React, { Component } from "react";
+import axios from "axios";
+
 import { LoadingAnimation } from "../components/Loading";
-import { CarouselNP } from "../components/Carousel";
+import Carousel from "../components/Carousel";
 
 interface DatasType {
-  id: string;
+  id: number;
   title: string;
-  image: string;
+  poster_path: string;
 }
 
-export class Nowplaying extends Component {
-  state = {
-    datas: [],
-    loading: true,
-  };
+interface PropsType {}
+
+interface StateType {
+  loading: boolean;
+  datas: DatasType[];
+}
+
+export class Nowplaying extends Component<PropsType, StateType> {
+  constructor(props: PropsType) {
+    super(props);
+    this.state = {
+      datas: [],
+      loading: true,
+    };
+  }
 
   componentDidMount() {
     this.fetchData();
   }
 
   fetchData() {
-    setTimeout(() => {
-      this.setState({
-        datas: [
-          {
-            id: "item1",
-            image: "src/assets/Movie1.jpg",
-          },
-          {
-            id: "item2",
-            image: "src/assets/Movie2.jpg",
-          },
-          {
-            id: "item3",
-            image: "src/assets/Movie3.jpg",
-          },
-          {
-            id: "item4",
-            image: "src/assets/Movie4.jpg",
-          },
-        ],
-        loading: false,
+    axios
+      .get(`now_playing?api_key=${import.meta.env.VITE_API_KEY}&language=en-US&page=1`)
+      .then((data) => {
+        const { results } = data.data;
+        this.setState({ datas: results });
+      })
+      .catch((error) => {
+        alert(error.toString());
+      })
+      .finally(() => {
+        this.setState({ loading: false });
       });
-    }, 1000);
   }
 
   render() {
     return (
-      <div id="Nowplaying" className="bg-black py-20">
-        <h1 className="pb-16 text-5xl font-bold text-center">Now Playing</h1>
-        <div>{this.state.loading ? <LoadingAnimation /> : this.state.datas.map((data: DatasType) => <CarouselNP id={data.id} image={data.image} />)}</div>
-        <div className="flex justify-center w-full pt-8 gap-2">
-          <a href="#item1" className="btn btn-md">
-            1
-          </a>
-          <a href="#item2" className="btn btn-md">
-            2
-          </a>
-          <a href="#item3" className="btn btn-md">
-            3
-          </a>
-          <a href="#item4" className="btn btn-md">
-            4
-          </a>
-        </div>
+      <div className="bg-black py-20">
+        <h1 className="pb-16 text-4xl md:text-5xl font-bold text-center">Now Playing</h1>
+        {!this.state.loading && (
+          <Carousel
+            datas={this.state.datas.slice(0, 5)}
+            content={(data) => (
+              <div
+                className="w-full h-full flex justify-center items-center bg-cover bg-center"
+                style={{
+                  backgroundImage: `linear-gradient(
+                    rgba(0, 0, 0, 0.35),
+                    rgba(0, 0, 0, 0.35)
+                  ), url(https://image.tmdb.org/t/p/original${data.poster_path})`,
+                }}
+              >
+                <a href="">
+                  <p className="text-white tracking-widest font-bold break-words text-xl max-w-xs md:max-w-full text-center hover:scale-110">{data.title}</p>
+                </a>
+              </div>
+            )}
+          />
+        )}
       </div>
     );
   }

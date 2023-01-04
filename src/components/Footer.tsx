@@ -3,7 +3,7 @@ import React, { Component } from "react";
 export class Footer extends Component {
   render() {
     return (
-      <footer className="footer px-16 py-6 bg-neutral text-neutral-content fl flex justify-between">
+      <footer className="footer px-5 md:px-16 py-6 bg-neutral text-neutral-content fl flex justify-between">
         <div>
           <p className="font-bold fr text-lg">CUTHLESS</p>
           <p>Heal the world with Movie</p>

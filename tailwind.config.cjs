@@ -8,7 +8,7 @@ module.exports = {
         black: "#0A0808",
         first: "#141311ff",
         second: "#2B2824ff",
-        third: "#469006ff",
+        third: "#41D701",
         forth: "#7B7B7Aff",
       },
     },

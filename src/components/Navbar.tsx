@@ -3,7 +3,7 @@ import React, { Component } from "react";
 export class Navbar extends Component {
   render() {
     return (
-      <div className="navbar bg-neutral fr font-bold text-third drop-shadow-2xl py-4 px-8">
+      <div className="navbar bg-neutral font-bold text-third drop-shadow-2xl py-4 px-4 md:px-8">
         {/* Mobile */}
         <div className="navbar-start">
           <div className="dropdown">
@@ -44,7 +44,7 @@ export class Navbar extends Component {
         </div>
         {/* Login Button */}
         <div className="navbar-end">
-          <a className="btn bg-third hover:btn-outline">LOGIN</a>
+          <a className="btn bg-third hover:btn-outline text-white">LOGIN</a>
         </div>
       </div>
     );
