@@ -47,7 +47,7 @@ export class Nowplaying extends Component<PropsType, StateType> {
 
   render() {
     return (
-      <div className="bg-black py-20">
+      <div className="bg-black pt-10 pb-20">
         <h1 className="pb-16 text-4xl md:text-5xl font-bold text-center">Now Playing</h1>
         {!this.state.loading && (
           <Carousel

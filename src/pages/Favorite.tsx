@@ -1,48 +1,55 @@
 import React, { Component } from "react";
-import axios from "axios";
 
-import { CardFav } from "../components/Card";
+import Layout from "../components/Layout";
+import Card from "../components/Card";
 import { LoadingSkeleton } from "../components/Loading";
+import { MovieType } from "../utils/types/movie";
 
-interface DatasType {
-  id: number;
-  title: string;
-  poster_path: string;
+interface PropsType {}
+
+interface StateType {
+  loading: boolean;
+  datas: MovieType[];
 }
 
-export class Favorite extends Component {
-  state = {
-    datas: [],
-    loading: true,
-  };
+export class Favorite extends Component<PropsType, StateType> {
+  constructor(props: PropsType) {
+    super(props);
+    this.state = {
+      datas: [],
+      loading: true,
+    };
+  }
 
   componentDidMount() {
     this.fetchData();
   }
 
   fetchData() {
-    axios
-      .get(`now_playing?api_key=${import.meta.env.VITE_API_KEY}&language=en-US&page=1`)
-      .then((data) => {
-        const { results } = data.data;
-        this.setState({ datas: results });
-      })
-      .catch((error) => {
-        alert(error.toString());
-      })
-      .finally(() => {
-        this.setState({ loading: false });
-      });
+    const getFav = localStorage.getItem("FavMov");
+    if (getFav) {
+      this.setState({ datas: JSON.parse(getFav) });
+    }
+    this.setState({ loading: false });
+  }
+
+  removeFav(data: MovieType) {
+    let dupeDatas: MovieType[] = this.state.datas.slice();
+    const filterData = dupeDatas.filter((item) => item.id !== data.id);
+    localStorage.setItem("FavMovie", JSON.stringify(filterData));
+    alert(`${data.title} was removed from Favorite`);
   }
 
   render() {
     return (
-      <div className="bg-black py-20">
+      <Layout>
         <h1 className="pb-16 text-4xl md:text-5xl font-bold text-center">Favorite</h1>
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-3 px-6">
-          {this.state.loading ? [...Array(20).keys()].map((data) => <LoadingSkeleton key={data} />) : this.state.datas.map((data: DatasType) => <CardFav key={data.id} title={data.title} image={data.poster_path} />)}
+          {this.state.loading
+            ? [...Array(20).keys()].map((data) => <LoadingSkeleton key={data} />)
+            : this.state.datas.map((data) => <Card key={data.id} title={data.title} image={data.poster_path} id={data.id} labelButton="REMOVE FROM FAVORITE" onClickFav={() => this.removeFav(data)} />)}
         </div>
-      </div>
+      </Layout>
     );
   }
 }

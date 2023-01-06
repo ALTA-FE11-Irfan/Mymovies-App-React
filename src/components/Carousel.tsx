@@ -45,7 +45,7 @@ const Carousel: FC<CarouselProps> = ({ datas, content }) => {
   }, []);
 
   return (
-    <div className="h-[75vh] w-full">
+    <div className="h-[75vh] w-full pt-20">
       <div className="relative h-full w-full overflow-hidden">
         <div className="top left absolute flex h-full w-full justify-between">
           <button
