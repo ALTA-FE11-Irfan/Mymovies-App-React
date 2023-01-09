@@ -1,26 +1,22 @@
-import { Component, ButtonHTMLAttributes } from "react";
+import { FC, ButtonHTMLAttributes } from "react";
 import { FaHeart, FaEye } from "react-icons/fa";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  label: string;
+  label?: string;
 }
 
-export class ButtonWatch extends Component<ButtonProps> {
-  render() {
-    return (
-      <button className="btn bg-third text-white hover:btn-outline tracking-wider text-xs w-full" {...this.props}>
-        {this.props.label}
-      </button>
-    );
-  }
-}
+export const ButtonWatch: FC<ButtonProps> = ({ label, ...props }) => {
+  return (
+    <button className="btn bg-third text-white hover:btn-outline tracking-wider text-xs w-full" {...props}>
+      {label}
+    </button>
+  );
+};
 
-export class ButtonFav extends Component<ButtonProps> {
-  render() {
-    return (
-      <button className="btn bg-third text-white hover:btn-outline tracking-wider text-xs w-full" {...this.props}>
-        {this.props.label}
-      </button>
-    );
-  }
-}
+export const ButtonFav: FC<ButtonProps> = ({ label, ...props }) => {
+  return (
+    <button className="btn bg-third text-white hover:btn-outline tracking-wider text-xs w-full" {...props}>
+      {label}
+    </button>
+  );
+};
