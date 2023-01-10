@@ -1,8 +1,17 @@
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+
+import { ThemeContext } from "../utils/themeContext";
 
 const Navbar = () => {
+  const { theme, setTheme } = useContext(ThemeContext);
+
+  function handleTheme() {
+    theme === "light" ? setTheme("dark") : setTheme("light");
+  }
+
   return (
-    <div className="navbar bg-neutral font-bold text-third drop-shadow-2xl py-4 px-4 md:px-8">
+    <div className="navbar bg-slate-200 dark:bg-neutral font-bold text-black dark:text-third drop-shadow-2xl py-4 px-4 md:px-8">
       {/* Mobile */}
       <div className="navbar-start">
         <div className="dropdown">
@@ -43,7 +52,9 @@ const Navbar = () => {
       </div>
       {/* Login Button */}
       <div className="navbar-end">
-        <a className="btn bg-third hover:btn-outline text-white">LOGIN</a>
+        <span className="btn border-0 bg-forth hover:btn-outline text-white" onClick={() => handleTheme()}>
+          Theme
+        </span>
       </div>
     </div>
   );

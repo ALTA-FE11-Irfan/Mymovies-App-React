@@ -8,6 +8,7 @@ import Carousel from "../components/Carousel";
 import { LoadingSkeleton } from "../components/Loading";
 import { MovieType } from "../utils/types/movie";
 import { useTitle } from "../utils/customHooks";
+import { FaHeart, FaEye } from "react-icons/fa";
 
 const Index = () => {
   useTitle("Cuthless - Heal the world with Movie");
@@ -59,11 +60,14 @@ const Index = () => {
     }
   };
 
+  const MyFavMovie = JSON.parse(localStorage.getItem("FavMovie") || "[]");
+  console.log(MyFavMovie);
+
   return (
     <Layout>
       <Hero />
-      <div className="bg-black pt-10 pb-20">
-        <h1 className="pb-16 text-4xl md:text-5xl font-bold text-center">Now Playing</h1>
+      <div className="bg-white dark:bg-black pt-10 pb-20">
+        <h1 className="py-16 text-4xl text-black dark:text-white md:text-5xl font-bold text-center">Now Playing</h1>
         {!loading && (
           <Carousel
             datas={datas.slice(0, 5)}
@@ -85,11 +89,25 @@ const Index = () => {
           />
         )}
       </div>
-      <h1 className="pb-16 text-4xl md:text-5xl font-bold text-center">Latest</h1>
+      <h1 className="pb-16 text-4xl text-black dark:text-white md:text-5xl font-bold text-center">Latest</h1>
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-3 px-6">
         {loading
           ? [...Array(20).keys()].map((data) => <LoadingSkeleton key={data} />)
-          : datas.map((data) => <Card key={data.id} title={data.title} image={data.poster_path} id={data.id} labelFav="ADD TO FAVORITE" labelWatch="WATCH" onClickFav={() => handleFav(data)} />)}
+          : datas.map((data) => {
+              const isFav = MyFavMovie.find((fav: any) => fav.id === data.id);
+              console.log(data.id, isFav);
+              return (
+                <Card
+                  key={data.id}
+                  title={data.title}
+                  image={data.poster_path}
+                  id={data.id}
+                  labelFav={<FaHeart className="text-lg" color={isFav ? "#ff0000" : "#ffffff"} />}
+                  labelWatch={<FaEye className="text-xl" />}
+                  onClickFav={() => handleFav(data)}
+                />
+              );
+            })}
       </div>
       <div className="btn-group gap-1 w-full justify-center pt-5">
         <button className="btn hover:btn-outline" onClick={() => prevPage()} disabled={page === 1}>

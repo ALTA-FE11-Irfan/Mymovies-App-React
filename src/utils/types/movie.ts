@@ -10,7 +10,7 @@ export interface VideosType {
 }
 
 export interface MovieType {
-  id?: number;
+  id: number;
   title?: string;
   poster_path?: string;
   overview?: string;

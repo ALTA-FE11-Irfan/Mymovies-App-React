@@ -9,9 +9,9 @@ interface LayoutProps {
 
 const Layout: FC<LayoutProps> = ({ children }) => {
   return (
-    <div className="bg-black">
+    <div className="bg-white dark:bg-black">
       <Navbar />
-      <div className="py-20">{children}</div>
+      <div className="pb-20">{children}</div>
       <Footer />
     </div>
   );

@@ -3,11 +3,6 @@ import ReactDOM from "react-dom/client";
 import axios from "axios";
 
 import App from "./routes";
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import Nowplaying from "./pages/NowPlaying";
-import Latest from "./pages";
-import Footer from "./components/Footer";
 import "./styles/index.css";
 
 axios.defaults.baseURL = "https://api.themoviedb.org/3/movie/";
