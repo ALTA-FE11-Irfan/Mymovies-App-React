@@ -1,6 +1,8 @@
+import axios from "axios";
+import { useState, useEffect } from "react";
+
 import Input from "./Input";
 import "../styles/Hero.css";
-
 import { FaSearch } from "react-icons/fa";
 
 const Hero = () => {
@@ -12,12 +14,6 @@ const Hero = () => {
           <img src="https://i.ibb.co/HtQcbVm/cuthless-icon.png" className="logo w-52 mx-auto" alt="cuthless-icon" />
           <h1 className="mb-5 text-4xl md:text-6xl font-bold">Wazzup!</h1>
           <p className="mb-5 text-sm md:text-md">Enjoy exclusive Cuthless Originals as well as popular movies and TV shows. Watch now!</p>
-          <div className="bg-neutral rounded-full mx-10 flex justify-between border border-forth">
-            <Input />
-            <button className="btn bg-third border border-third text-white hover:btn-outline w-20">
-              <FaSearch className="text-xl" />
-            </button>
-          </div>
         </div>
       </div>
     </div>

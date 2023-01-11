@@ -20,15 +20,15 @@ const Navbar = () => {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
             </svg>
           </label>
-          <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+          <ul tabIndex={0} className="menu bg-slate-200 dark:bg-neutral menu-compact dropdown-content mt-3 p-2 shadow rounded-box w-52">
             <li>
-              <a>Movies</a>
+              <Link to="/">Movies</Link>
             </li>
             <li>
-              <a>Now Playing</a>
+              <Link to="/">Now Playing</Link>
             </li>
             <li>
-              <a>Favorites</a>
+              <Link to="/favorites">Favorites</Link>
             </li>
           </ul>
         </div>

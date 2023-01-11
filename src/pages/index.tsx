@@ -110,11 +110,11 @@ const Index = () => {
             })}
       </div>
       <div className="btn-group gap-1 w-full justify-center pt-5">
-        <button className="btn hover:btn-outline" onClick={() => prevPage()} disabled={page === 1}>
+        <button className="btn border-0 bg-forth dark:bg-neutral hover:btn-outline" onClick={() => prevPage()} disabled={page === 1}>
           «
         </button>
-        <button className="btn hover:btn-outline">{page}</button>
-        <button className="btn hover:btn-outline" onClick={() => nextPage()} disabled={page === totalPage}>
+        <button className="btn border-0 bg-forth dark:bg-neutral hover:btn-outline">{page}</button>
+        <button className="btn border-0 bg-forth dark:bg-neutral hover:btn-outline" onClick={() => nextPage()} disabled={page === totalPage}>
           »
         </button>
       </div>

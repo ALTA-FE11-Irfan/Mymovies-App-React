@@ -38,11 +38,11 @@ const DetailMovie = () => {
         <LoadingAnimation />
       ) : (
         <>
-          <div className="card card-compact lg:card-side bg-neutral">
+          <div className="card mx-5 my-8 card-compact lg:card-side bg-slate-200 text-black dark:text-white dark:bg-neutral">
             <figure className="w-full">
               <img src={`https://image.tmdb.org/t/p/w500${data.poster_path}`} alt={data.title} />
             </figure>
-            <div className="card-body my-3 justify-between items-end md:mx-6">
+            <div className="card-body justify-between items-end md:mx-6">
               <div className="text-md md:text-xl">
                 <h1 className="font-bold text-center text-3xl md:text-4xl">{data.title}</h1>
                 <br />
@@ -68,7 +68,7 @@ const DetailMovie = () => {
                 </p>
               </div>
               <div className="card-actions">
-                <button className="btn bg-third text-white hover:btn-outline w-full tracking-wider">Watch</button>
+                <button className="btn border-0 bg-forth dark:bg-third text-white hover:btn-outline w-full tracking-wider">Watch</button>
               </div>
             </div>
           </div>
@@ -77,7 +77,7 @@ const DetailMovie = () => {
             content={(data) => (
               <iframe
                 width="100%"
-                height="315"
+                height="100%"
                 src={`https://www.youtube.com/embed/${data.key}`}
                 title={data.name}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

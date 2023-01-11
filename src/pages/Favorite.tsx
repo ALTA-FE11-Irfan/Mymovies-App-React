@@ -5,6 +5,7 @@ import Card from "../components/Card";
 import { LoadingSkeleton } from "../components/Loading";
 import { MovieType } from "../utils/types/movie";
 import { useTitle } from "../utils/customHooks";
+import { FaHeart, FaEye } from "react-icons/fa";
 
 const Favorite = () => {
   useTitle("Favorite | Cuthless");
@@ -36,7 +37,9 @@ const Favorite = () => {
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-3 px-6">
         {loading
           ? [...Array(20).keys()].map((data) => <LoadingSkeleton key={data} />)
-          : datas.map((data) => <Card key={data.id} title={data.title} image={data.poster_path} id={data.id} labelWatch="WATCH" labelFav="REMOVE FROM FAVORITES" onClickFav={() => removeFav(data)} />)}
+          : datas.map((data) => (
+              <Card key={data.id} title={data.title} image={data.poster_path} id={data.id} labelWatch={<FaEye className="text-xl" />} labelFav={<FaHeart className="text-lg" color="#ff0000" />} onClickFav={() => removeFav(data)} />
+            ))}
       </div>
     </Layout>
   );
