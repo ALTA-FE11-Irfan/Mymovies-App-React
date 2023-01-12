@@ -22,12 +22,6 @@ const Navbar = () => {
           </label>
           <ul tabIndex={0} className="menu bg-slate-200 dark:bg-neutral menu-compact dropdown-content mt-3 p-2 shadow rounded-box w-52">
             <li>
-              <Link to="/">Movies</Link>
-            </li>
-            <li>
-              <Link to="/">Now Playing</Link>
-            </li>
-            <li>
               <Link to="/favorites">Favorites</Link>
             </li>
           </ul>
@@ -39,12 +33,6 @@ const Navbar = () => {
       {/* Desktop */}
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
-          <li>
-            <Link to="/">Movies</Link>
-          </li>
-          <li>
-            <Link to="/">Now Playing</Link>
-          </li>
           <li>
             <Link to="/favorites">Favorites</Link>
           </li>

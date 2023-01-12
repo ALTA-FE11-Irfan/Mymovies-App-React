@@ -28,12 +28,13 @@ const Favorite = () => {
     let dupeDatas: MovieType[] = datas.slice();
     const filterData = dupeDatas.filter((item) => item.id !== data.id);
     localStorage.setItem("FavMovie", JSON.stringify(filterData));
+    setDatas(filterData);
     alert(`${data.title} was removed from Favorite`);
   };
 
   return (
     <Layout>
-      <h1 className="pb-16 text-4xl md:text-5xl font-bold text-center">Favorite</h1>
+      <h1 className="py-16 text-4xl md:text-5xl font-bold text-center text-black dark:text-white">Favorite</h1>
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-3 px-6">
         {loading
           ? [...Array(20).keys()].map((data) => <LoadingSkeleton key={data} />)

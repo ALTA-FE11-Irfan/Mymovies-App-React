@@ -61,7 +61,6 @@ const Index = () => {
   };
 
   const MyFavMovie = JSON.parse(localStorage.getItem("FavMovie") || "[]");
-  console.log(MyFavMovie);
 
   return (
     <Layout>
